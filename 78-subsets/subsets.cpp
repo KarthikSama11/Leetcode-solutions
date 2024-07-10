@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void dfs(int i, vector<int> &arr, vector<int> &nums, vector<vector<int>> &ans){
+    void dfs(int i, vector<int> arr, vector<int> &nums, vector<vector<int>> &ans){
       if(i >= nums.size()){
         ans.push_back(arr);
         return;
