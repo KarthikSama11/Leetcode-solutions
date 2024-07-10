@@ -5,10 +5,11 @@ public:
         ans.push_back(arr);
         return;
       }
+      
+      dfs(i + 1, arr, nums, ans);
       arr.push_back(nums[i]);
       dfs(i + 1, arr, nums, ans);
-      arr.pop_back();
-      dfs(i + 1, arr, nums, ans);
+      
       return;
     }
     vector<vector<int>> subsets(vector<int>& nums) {
