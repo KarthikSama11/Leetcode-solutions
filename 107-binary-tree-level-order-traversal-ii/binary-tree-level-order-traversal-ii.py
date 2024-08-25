@@ -7,22 +7,20 @@
 class Solution:
     def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
       ans = []
-      if not root:
-        return []
-      q = deque()
-      q.append(root)
-      while q:
-        size = len(q)
-        level = []
-        while size:
-          node = q.popleft()
-          level.append(node.val)
-          if node.left:
-            q.append(node.left)
-          if node.right:
-            q.append(node.right)
-          size -= 1
-        ans.append(level.copy())
+      def dfs(node, level):
+        if not node:
+          return
+        if len(ans) == level:
+          ans.append([])
+        if node.left:
+          dfs(node.left, level + 1)
+        if node.right:
+          dfs(node.right, level + 1)
+        # print(level, node.val, ans)
+        ans[level].append(node.val)
+        return
+      dfs(root, 0)
       ans.reverse()
       return ans
+
           
