@@ -13,23 +13,27 @@ class Solution:
         return []
       q.append(root)
       direction = True
-      levels = 0
+      # levels = 0
       while q:
         size = len(q)
-        level = []
-        while size:
+        level = [0]*size
+        i = 0
+        while i < size:
           node = q.popleft()
-          level.append(node.val)
+          idx = i if direction  else size - 1 -i
+          level[idx] = node.val
           if node.left:
             q.append(node.left)
           if node.right:
             q.append(node.right)
-          size -= 1 
-        if levels % 2 != 0:
-          level.reverse()
+          # size -= 1 
+          i += 1
+        # if levels % 2 != 0:
+          # level.reverse()
         # print(level)
         ans.append(level.copy())
         level.clear()
-        levels += 1
+        # levels += 1
+        direction = not direction
       return ans
         
