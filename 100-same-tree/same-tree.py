@@ -9,17 +9,18 @@ class Solution:
       self.pvals = []
       self.qvals = []
 
-      def dfs(node, arr):
-        if not node:
-          arr.append(-1e5)
-          return 
-
-        dfs(node.left, arr)
-        dfs(node.right, arr)
-        arr.append(node.val)
-        return
-      dfs(p, self.pvals)
-      dfs(q, self.qvals)
-      print(self.pvals, self.qvals)
-      return self.pvals == self.qvals  
+      def dfs(p, q):
+        if not p and not q:
+          return True
+        if not p and q:
+          return False
+        if not q and p:
+          return False
+        if p.val != q.val:
+          return False 
+        l = dfs(p.left, q.left)
+        r = dfs(p.right, q.right)
+        return l and r
+      
+      return dfs(p, q) 
            
