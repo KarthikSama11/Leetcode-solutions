@@ -22,27 +22,42 @@ class Solution:
           self.dad[node.right] = node
           finder(node.right)
       finder(root)
+      self.vis = set()
+      def dfs(node):
+        if not node:
+          return 0
+        if node in self.vis:
+          return 0
+        self.vis.add(node)
+        l = dfs(node.left)
+        r = dfs(node.right)
+        s = 0
+        if node in self.dad:
+          s = dfs(self.dad[node])
+        return 1 + max(l, r, s)
+      return dfs(self.target) - 1
+        
       # print(self.target)
-      minutes = 0
-      q = deque()
-      q.append(self.target)
-      vis = set()
-      while q:
-        q1 = deque()
-        # print(q)
-        # print("\n")
-        for i in range(len(q)):
-          node = q.popleft()
-          vis.add(node)
-          if node in self.dad and self.dad[node] not in vis:
-            q1.append(self.dad[node])
-          if node.left and node.left not in vis:
-            q1.append(node.left)
-          if node.right and node.right not in vis:
-            q1.append(node.right)
-        q = q1
-        if len(q):
-          minutes += 1
-        else:
-          break
-      return minutes
+      # minutes = 0
+      # q = deque()
+      # q.append(self.target)
+      # vis = set()
+      # while q:
+      #   q1 = deque()
+      #   # print(q)
+      #   # print("\n")
+      #   for i in range(len(q)):
+      #     node = q.popleft()
+      #     vis.add(node)
+      #     if node in self.dad and self.dad[node] not in vis:
+      #       q1.append(self.dad[node])
+      #     if node.left and node.left not in vis:
+      #       q1.append(node.left)
+      #     if node.right and node.right not in vis:
+      #       q1.append(node.right)
+      #   q = q1
+      #   if len(q):
+      #     minutes += 1
+      #   else:
+      #     break
+      # return minutes
