@@ -19,22 +19,21 @@ class Solution:
       # for i in range(len(skipinds)):
       #   if 
       stack = []
-      ignore = set()
+      # ignore = set()
       for i, ch in enumerate(s):
         if ch == '(':
           stack.append((i, ch))
         elif ch == ')':
-          if not len(stack):
-            ignore.add(i)
-          else:
+          if len(stack) and stack[-1][1] == '(':
             stack.pop()
-      while stack:
-        ignore.add(stack[-1][0])
-        stack.pop()
+          else:
+            stack.append((i,ch))
+
+      stack = set(stack)
       
       ans = ""
       for i, ch in enumerate(s):
-        if i in ignore:
+        if (i, ch) in stack:
           continue
         ans += ch
       return ans
