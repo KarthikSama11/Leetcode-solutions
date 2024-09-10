@@ -10,7 +10,7 @@ class Solution:
       # def gcd(a, b):
         
       while right:
-        newVal = math.gcd(min(left.val, right.val), max(left.val, right.val))
+        newVal = math.gcd(left.val,  right.val)
         newNode = ListNode(newVal, right)
         left.next = newNode
         left = right
