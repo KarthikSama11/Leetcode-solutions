@@ -5,6 +5,8 @@ class Solution:
       # N = len(express)
       
       def splitter(express):
+        if len(express) <= 2:
+          return [int(express)]
         res = []
         for i, ch in enumerate(express):
           if ch in "*-+":
