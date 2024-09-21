@@ -5,7 +5,7 @@ class Solution:
       # N = len(express)
       dp = {}
       def splitter(express):
-        if len(express) <= 2:
+        if express.isdigit():
           return [int(express)]
         if express in dp:
           return dp[express]
