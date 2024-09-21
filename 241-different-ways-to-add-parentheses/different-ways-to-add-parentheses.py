@@ -3,12 +3,13 @@ class Solution:
       # express = []
       # for x, v in groupby()
       # N = len(express)
-      dp = {}
+      # dp = {}
+      @cache
       def splitter(express):
         if express.isdigit():
           return [int(express)]
-        if express in dp:
-          return dp[express]
+        # if express in dp:
+        #   return dp[express]
         res = []
         for i, ch in enumerate(express):
           if ch in "*-+":
@@ -24,7 +25,7 @@ class Solution:
                 else:
                   x = p * q
                 res.append(x)
-        dp[express] = res
+        # dp[express] = res
         return res
       ans = splitter(expression)
       return ans 
