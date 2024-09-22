@@ -8,8 +8,8 @@ class Solution:
         res.append(num)
         num *= 10
         for i in range(0, 10):
-          if num + i > n:
-            return
+          # if num + i > n:
+          #   return
           dfs(num + i)
         return
       for i in range(1, 10):
