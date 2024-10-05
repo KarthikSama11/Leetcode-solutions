@@ -14,9 +14,9 @@ class Solution:
         13 13 13 13 14
         14 14 14 14 14
         """
-        nums.sort()
+        # nums.sort()
         ans = 0
-        start = nums[0]
+        start = min(nums)
         for num in nums:
             ans += num - start
         return ans
