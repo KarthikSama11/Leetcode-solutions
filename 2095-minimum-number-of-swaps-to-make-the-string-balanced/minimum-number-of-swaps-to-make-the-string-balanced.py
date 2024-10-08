@@ -1,14 +1,12 @@
 class Solution:
     def minSwaps(self, s: str) -> int:
         stack = []
+        cnt = 0
         for ch in s:
             if ch == "[":
-                stack.append(ch)
-                
-            else:
-                if len(stack) > 0 and stack[-1] == "[":
-                    stack.pop()
-                else:
-                    stack.append(ch)
+                cnt += 1                
+            elif cnt > 0:
+                cnt -= 1
+
         # print(stack)
-        return ((len(stack)//2)+1)//2
+        return (cnt + 1)//2
