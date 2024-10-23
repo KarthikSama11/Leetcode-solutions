@@ -8,6 +8,7 @@ class Solution:
     def kthLargestLevelSum(self, root: Optional[TreeNode], k: int) -> int:
         ans = -1
         sums = []
+        heapify(sums)
         q = deque()
         q.append(root)
         while q:
@@ -21,10 +22,11 @@ class Solution:
                 if node.right:
                     q1.append(node.right)
             q = q1
-            sums.append(cur)
+            heappush(sums,cur)
+            if len(sums) > k:
+                heappop(sums)
         if len(sums) < k:
             return -1
-        heapify(sums)
-        while len(sums) > k:
-            heappop(sums)
+        # heapify(sums)
+        
         return heappop(sums)
