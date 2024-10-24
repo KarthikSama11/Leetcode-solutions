@@ -11,6 +11,8 @@ class Solution:
                 word = s[i : j + 1]
                 if word in subs:
                     continue
+                if len(subs) + N - j <= ans:
+                    return ans
                 subs.add(word)
                 ans = max(ans,dfs(subs, j + 1)+1)
                 subs.remove(word)
