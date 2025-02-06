@@ -15,6 +15,6 @@ class Solution:
                 
             
             
-        print(stack)
+        # print(stack)
             
         return len(stack)
