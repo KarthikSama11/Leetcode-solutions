@@ -1,11 +1,11 @@
 class Solution:
     def maxChunksToSorted(self, arr: List[int]) -> int:
-        stack = [arr[0]]
-        N = len(arr)
-        for i in range(1, N):
-            num = arr[i]
-            big = num
-            while len(stack) and stack[-1] > num:
-                big = max(big, stack.pop())
-            stack.append(big)
-        return len(stack)
+        pre = 0
+        cur = 0
+        ans = 0
+        for i, num in enumerate(arr):
+            pre += i
+            cur += num
+            if pre == cur:
+                ans += 1
+        return ans
