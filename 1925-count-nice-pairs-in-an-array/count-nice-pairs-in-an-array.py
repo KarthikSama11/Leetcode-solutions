@@ -2,7 +2,7 @@ class Solution:
     def countNicePairs(self, nums: List[int]) -> int:
         ans = 0
         umap = defaultdict(int)
-        MOD = 1e9 + 7
+        MOD = 10**9 + 7
         def rev(num):
             s_num = str(num)
             s_num = s_num[::-1]
@@ -10,6 +10,6 @@ class Solution:
             return num
         for num in nums:
             minus = num - rev(num)
-            ans = (ans % MOD + umap[minus] % MOD) % MOD
+            ans = (ans + umap[minus] % MOD) % MOD
             umap[minus] += 1
-        return int(ans) 
+        return ans 
