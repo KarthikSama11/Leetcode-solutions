@@ -4,6 +4,11 @@ class Solution:
         umap = defaultdict(int)
         MOD = 10**9 + 7
         def rev(num):
+            r = 0
+            while num:
+                r = r * 10 + num % 10
+                num //= 10
+            return r
             s_num = str(num)
             s_num = s_num[::-1]
             num = int(s_num)
