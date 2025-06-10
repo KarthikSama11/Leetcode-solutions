@@ -27,9 +27,9 @@ class PeekingIterator:
         :type iterator: Iterator
         """
         self.it = iterator
-        self.peeked = None
+        self.cur = None
         if self.it.hasNext():
-            self.peeked = self.it.next()
+            self.cur = self.it.next()
 
     def peek(self):
         """
@@ -37,14 +37,14 @@ class PeekingIterator:
         :rtype: int
         """
 
-        return self.peeked
+        return self.cur
         
     def next(self):
         """
         :rtype: int
         """
-        cur = self.peeked
-        self.peeked = self.it.next() if self.it.hasNext() else None
+        cur = self.cur
+        self.cur = self.it.next() if self.it.hasNext() else None
 
         return cur
         
@@ -54,7 +54,7 @@ class PeekingIterator:
         """
         :rtype: bool
         """
-        return self.peeked is not None
+        return self.cur is not None
 
 # Your PeekingIterator object will be instantiated and called as such:
 # iter = PeekingIterator(Iterator(nums))
